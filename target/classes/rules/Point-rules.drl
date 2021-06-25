@@ -1,0 +1,35 @@
+package book.discount
+
+import com.example.demo1.Order
+
+rule "book_discount_1"
+    when
+        $order:Order(originalPrice <= 100)
+    then
+        $order.setRealPrice($order.getOriginalPrice());
+        System.out.println("匹配规则1：100圆以下无优惠");
+end
+
+rule "book_discount_2"
+    when
+        $order:Order(originalPrice < 200 && originalPrice >= 100)
+    then
+        $order.setRealPrice($order.getOriginalPrice() - 20);
+        System.out.println("匹配规则2：100 - 200圆优惠20");
+end
+
+rule "book_discount_3"
+    when
+        $order:Order(originalPrice >= 300)
+    then
+        $order.setRealPrice($order.getOriginalPrice() - 100);
+        System.out.println("匹配规则3：300圆以上优惠100");
+end
+
+rule "book_discount_4"
+    when
+        $order:Order(originalPrice >= 0)
+    then
+        $order.setOriginalPrice($order.getOriginalPrice() * 4);
+        System.out.println("匹配规则5：");
+end
