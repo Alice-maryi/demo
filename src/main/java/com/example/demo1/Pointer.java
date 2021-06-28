@@ -15,9 +15,6 @@ public class Pointer {
         int[] arr = {1,2,3,4,5};
         int i = maxi(arr, 11);
         System.out.println(i);
-        System.out.println(i);
-        System.out.println(i);
-
     }
 
     static int maxi(int[] nums, int target) {
